@@ -1,0 +1,20 @@
+{% extends "webapp/base.html" %}
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Clients</h2>
+        <a href="{% url 'webapp:client-create' %}" class="btn btn-primary">Add New Client</a>
+    </div>
+    <div class="list-group">
+        {% for client in clients %}
+            <a href="{% url 'webapp:client-detail' client.pk %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ client.client_name }}</h5>
+                    <small>Created on: {{ client.created_at|date:"M d, Y" }}</small>
+                </div>
+                <p class="mb-1">Created by: {{ client.created_by.username }}</p>
+            </a>
+        {% empty %}
+            <p class="text-center">No clients found. Add one!</p>
+        {% endfor %}
+    </div>
+{% endblock %}

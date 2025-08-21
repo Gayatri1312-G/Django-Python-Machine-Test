@@ -1,0 +1,15 @@
+{% extends "webapp/base.html" %}
+{% block content %}
+    <h2>My Projects</h2>
+    <div class="list-group">
+        {% for project in projects %}
+            <div class="list-group-item">
+                <h5 class="mb-1">{{ project.project_name }}</h5>
+                <p class="mb-1"><strong>Client:</strong> {{ project.client.client_name }}</p>
+                <small>Created by: {{ project.created_by.username }} on {{ project.created_at|date:"M d, Y" }}</small>
+            </div>
+        {% empty %}
+            <p class="text-center">You are not assigned to any projects.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

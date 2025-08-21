@@ -1,0 +1,10 @@
+{% extends "webapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2>Create New Project</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Save Project</button>
+    </form>
+{% endblock %}
